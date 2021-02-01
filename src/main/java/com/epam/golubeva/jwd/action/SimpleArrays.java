@@ -2,31 +2,28 @@ package com.epam.golubeva.jwd.action;
 
 import com.epam.golubeva.jwd.entity.SimpleArray;
 
+import java.util.Arrays;
+
 public class SimpleArrays {
     public static int min(SimpleArray simpleArray) {
         if (simpleArray == null) {
             throw new NullPointerException("Array is empty!");
         }
-        int min = simpleArray.getArray()[0];
-        for (int i : simpleArray.getArray()) {
-            if (min > i) {
-                min = i;
-            }
-        }
-        return min;
+        return Arrays
+                .stream(simpleArray.getArray())
+                .min()
+                .getAsInt();
+
     }
 
     public static int max(SimpleArray simpleArray) {
         if (simpleArray == null) {
             throw new NullPointerException("Array is empty");
         }
-        int max = simpleArray.getArray()[0];
-        for (int i : simpleArray.getArray()) {
-            if (max < i) {
-                max = i;
-            }
-        }
-        return max;
+        return Arrays
+                .stream(simpleArray.getArray())
+                .max()
+                .getAsInt();
     }
 
     public static void change(SimpleArray simpleArray, int from, int to, int change) {
